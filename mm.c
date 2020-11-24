@@ -1,13 +1,7 @@
 /*
- * mm-naive.c - The fastest, least memory-efficient malloc package.
+ * mm.c - The fastest, least memory-efficient malloc package.
  * 
- * In this naive approach, a block is allocated by simply incrementing
- * the brk pointer.  A block is pure payload. There are no headers or
- * footers.  Blocks are never coalesced or reused. Realloc is
- * implemented directly using mm_malloc and mm_free.
- *
- * NOTE TO STUDENTS: Replace this header comment with your own header
- * comment that gives a high level description of your solution.
+ * 
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -240,9 +234,8 @@ static void *find_fit(size_t asize)
             return bp;
         }
     }
-    return NULL; /* No fit */
+    return NULL;  /* No fit */
 }
-
 /*
  * place - place the requested block at the beginning of the free
  * block, splitting only if the size of the remainder would equal or exceed the minimum block size.
@@ -263,15 +256,6 @@ static void place(void *bp, size_t asize)
         PUT(FTRP(bp), PACK(csize, 1));
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 
