@@ -173,7 +173,9 @@ void *mm_realloc(void *ptr, size_t size)
 }
 
 /*
- * extend_heap - extends the heap with a new free block
+ * extend_heap - extends the heap with a new free block. Heap begins on a double word
+ *               aligned boundary, and every call to it returns a block whose size is 
+ *               an integral number of double words. 
  */
 static void *extend_heap(size_t words)
 {
@@ -195,7 +197,12 @@ static void *extend_heap(size_t words)
 }
 
 /*
- * coalesce - helper function
+ * coalesce - helper function implements the four possible cases for when the 
+ *            allocator frees the current block. 
+ *            1. prev and next allocated
+ *            2. prev allocated next free
+ *            3. prev free and next alloacted
+ *            4. next and prev free
  */ 
 static void *coalesce(void *bp)
 {
