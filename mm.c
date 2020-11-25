@@ -1,5 +1,6 @@
 /*
- * mm.c - 
+ * mm.c - simple allocator based on an implicit free list
+ * referenced from our Computer Systems textbook
  * 
  * 
  */
