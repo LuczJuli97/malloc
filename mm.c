@@ -1,5 +1,5 @@
 /*
- * mm.c - The fastest, least memory-efficient malloc package.
+ * mm.c - 
  * 
  * 
  */
@@ -73,7 +73,13 @@ static void *coalesce(void *bp);
 static void *extend_heap(size_t words);
 
 /* 
- * mm_init - initialize the malloc package.
+ * mm_init - gets four words from the memory system and initializes
+ * them to create the empty free list  
+ * 
+ * it then calls the extend_heap function which extends the heap by CHUNKSIZE bytes and creates
+ * the initial free block. At this point, the allocator is initialized and ready to accept
+ * allocate and free requests from the application
+ * 
  */
 int mm_init(void)
 {
@@ -96,6 +102,8 @@ int mm_init(void)
 
 /* 
  * mm_malloc - mm_malloc allocates a block from the free list.
+ * application requests a block of size bytes of memory by calling the mm_malloc
+ * function
  */
 void *mm_malloc(size_t size)
 {
